@@ -4,6 +4,11 @@ on:
     branches: [main]
     paths:
       - .github/workflows/bootstrap-maya.yml
+      - app/**
+      - build.gradle
+      - gradle.properties
+      - settings.gradle
+      - FEATURE_STATUS.md
   workflow_dispatch:
 
 permissions:
@@ -16,34 +21,14 @@ jobs:
       - name: Checkout MAYA
         uses: actions/checkout@v4
 
-      - name: Verify and expand the independently authored source
+      - name: Check independently authored Android sources
         shell: bash
         run: |
           set -euo pipefail
-          cat source-parts/{00..06}.b64 | base64 --decode > maya-source.tar.br
-          echo 'ca4551ce337a260949429c58a2e15d04119f881e645fc46def2c1bcf38eeef6e  maya-source.tar.br' | sha256sum --check
-          node -e "const fs=require('node:fs');const z=require('node:zlib');fs.writeFileSync('maya-source.tar',z.brotliDecompressSync(fs.readFileSync('maya-source.tar.br')))"
-          tar -xf maya-source.tar
-          rm maya-source.tar maya-source.tar.br
           test -f app/src/main/java/com/tanimworld/maya/MainActivity.java
           test -f app/src/main/java/com/tanimworld/maya/LiveSession.java
           test -f LICENSE.txt
-          echo 'Original source verified and expanded.'
-
-      - name: Publish app source, license and docs (without workflow-scope edits)
-        shell: bash
-        run: |
-          set -euo pipefail
-          rm -f .github/workflows/android-debug-apk.yml
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add README.md BUILD_TEST_REPORT.md EXTENSION_PLAN.md FEATURE_STATUS.md LICENSE.txt THIRD_PARTY_NOTICES.md app/ build.gradle gradle.properties settings.gradle
-          if ! git diff --cached --quiet; then
-            git commit -m 'Add original TaNiM world MAYA Android sources, docs and rights notice'
-            git push origin HEAD:main
-          else
-            echo 'Source already published.'
-          fi
+          echo 'Tracked independent source verified.'
 
       - name: Set up Java
         uses: actions/setup-java@v4
