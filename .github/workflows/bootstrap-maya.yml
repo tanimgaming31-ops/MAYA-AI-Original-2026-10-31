@@ -56,8 +56,10 @@ jobs:
         run: |
           set -euo pipefail
           echo "ANDROID_HOME: ${ANDROID_HOME:-not-set}"
-          command -v sdkmanager
-          sdkmanager --install 'platforms;android-35' 'build-tools;35.0.0'
+          SDKMANAGER="$(find "${ANDROID_HOME}/cmdline-tools" -type f -name sdkmanager | sort -V | tail -n 1)"
+          test -x "$SDKMANAGER"
+          echo "Using SDK manager at: $SDKMANAGER"
+          "$SDKMANAGER" --install 'platforms;android-35' 'build-tools;35.0.0'
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
