@@ -56,6 +56,7 @@ public final class SettingsActivity extends Activity {
         addButton(layout, "ON-DEVICE DOCUMENT / RECEIPT / QR", () -> startActivity(new Intent(this, DocumentToolsActivity.class)));
         addButton(layout, "APP MACROS (REVIEW EACH RUN)", () -> startActivity(new Intent(this, MacroActivity.class)));
         addButton(layout, "OPEN FLOATING OVERLAY PERMISSION", () -> startActivity(new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName()))));
+        addButton(layout, "GEMINI IMAGE / SCREENSHOT VISION (REQUIRES CONSENT)", () -> startActivity(new Intent(this, ImageVisionActivity.class)));
         addButton(layout, "OPEN ACCESSIBILITY SETTINGS", () -> startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)));
         addButton(layout, "OPEN APP PERMISSIONS", () -> startActivity(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:" + getPackageName()))));
         addLabel(layout, "Android requires separate user approval for microphone and Accessibility. No hidden monitoring. Voice is sent to Google only when the active session is started.", 13, Color.LTGRAY);

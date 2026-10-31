@@ -29,6 +29,7 @@
         <activity android:name=".AvatarPickerActivity" android:exported="false" />
         <activity android:name=".DocumentToolsActivity" android:exported="false" />
         <activity android:name=".MacroActivity" android:exported="false" />
+        <activity android:name=".ImageVisionActivity" android:exported="false" />
         <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

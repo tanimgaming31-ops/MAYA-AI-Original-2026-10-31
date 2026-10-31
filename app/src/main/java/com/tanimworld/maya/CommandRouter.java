@@ -43,6 +43,10 @@ public final class CommandRouter {
         if (lower.startsWith("avatar ")) return AvatarStyles.set(context,text.substring(7));
         if (lower.equals("avatars")) { context.startActivity(new Intent(context,AvatarPickerActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); return "Avatar picker opened."; }
         if (lower.equals("choose contact")) { context.startActivity(new Intent(context,ContactPickerActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); return "Contact picker opened."; }
+        if (lower.equals("screenshot vision") || lower.equals("image vision")) {
+            context.startActivity(new Intent(context,ImageVisionActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            return "Image picker opened. You must approve any upload.";
+        }
         if (lower.equals("notification replies")) { context.startActivity(new Intent(context,ReplyActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); return "Approved reply screen opened."; }
         if (lower.equals("play pause") || lower.equals("pause music")) return media(context,"toggle");
         if (lower.equals("next song")) return media(context,"next");
