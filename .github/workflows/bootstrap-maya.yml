@@ -15,8 +15,6 @@ jobs:
     steps:
       - name: Checkout MAYA
         uses: actions/checkout@v4
-        with:
-          persist-credentials: true
 
       - name: Verify and expand the independently authored source
         shell: bash
@@ -30,22 +28,21 @@ jobs:
           test -f app/src/main/java/com/tanimworld/maya/MainActivity.java
           test -f app/src/main/java/com/tanimworld/maya/LiveSession.java
           test -f LICENSE.txt
-          test -f .github/workflows/android-debug-apk.yml
           echo 'Original source verified and expanded.'
 
-      - name: Publish source files to this GitHub repository
+      - name: Publish app source, license and docs (without workflow-scope edits)
         shell: bash
-        continue-on-error: true
         run: |
           set -euo pipefail
+          rm -f .github/workflows/android-debug-apk.yml
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A
+          git add README.md BUILD_TEST_REPORT.md EXTENSION_PLAN.md FEATURE_STATUS.md LICENSE.txt THIRD_PARTY_NOTICES.md app/ build.gradle gradle.properties settings.gradle
           if ! git diff --cached --quiet; then
-            git commit -m 'Add TaNiM world original MAYA Android source and license'
+            git commit -m 'Add original TaNiM world MAYA Android sources, docs and rights notice'
             git push origin HEAD:main
           else
-            echo 'Source already present.'
+            echo 'Source already published.'
           fi
 
       - name: Set up Java
@@ -54,11 +51,13 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-
-      - name: Install Android SDK 35
-        run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
+      - name: Install Android SDK 35 with preinstalled sdkmanager
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "ANDROID_HOME: ${ANDROID_HOME:-not-set}"
+          command -v sdkmanager
+          sdkmanager --install 'platforms;android-35' 'build-tools;35.0.0'
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
