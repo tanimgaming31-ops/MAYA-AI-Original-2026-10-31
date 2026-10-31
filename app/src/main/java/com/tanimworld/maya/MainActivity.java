@@ -37,6 +37,7 @@ public final class MainActivity extends Activity implements MayaBus.Listener {
         row(col, "17 AVATARS", () -> startActivity(new Intent(this, AvatarPickerActivity.class)), "SCREENSHOT", () -> say(ScreenshotHelper.capture()));
         row(col, "DOCUMENT OCR", () -> startActivity(new Intent(this, DocumentToolsActivity.class)), "QR / BARCODE", () -> startActivity(new Intent(this, DocumentToolsActivity.class)));
         row(col, "APP MACROS", () -> startActivity(new Intent(this, MacroActivity.class)), "MEMORY PACKS", () -> startActivity(new Intent(this, MemoryPackActivity.class)));
+        row(col, "FLOATING MAYA ON", () -> toggleFloating(true), "FLOATING OFF", () -> toggleFloating(false));
         EditText command = new EditText(this); command.setSingleLine(false); command.setMinLines(2);
         command.setHint("Try: remember my cat is black\nopen youtube · torch on · search weather");
         command.setHintTextColor(0xFF68758D); command.setTextColor(Color.WHITE);
@@ -63,6 +64,18 @@ public final class MainActivity extends Activity implements MayaBus.Listener {
         Button r = new Button(this); r.setAllCaps(false); r.setText(b); r.setOnClickListener(v -> right.run());
         row.addView(l, new LinearLayout.LayoutParams(0, -2, 1)); row.addView(r, new LinearLayout.LayoutParams(0, -2, 1));
         col.addView(row);
+    }
+    private void toggleFloating(boolean on) {
+        if (on && !android.provider.Settings.canDrawOverlays(this)) {
+            say("Grant Display over other apps permission, then tap Floating MAYA On again.");
+            startActivity(new Intent(android.provider.Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                    android.net.Uri.parse("package:" + getPackageName())));
+            return;
+        }
+        Intent i=new Intent(this,FloatingAvatarService.class);
+        i.setAction(on?FloatingAvatarService.START:FloatingAvatarService.STOP);
+        startService(i);
+        say(on?"Floating avatar requested.":"Floating avatar stopped.");
     }
     private void say(String message) { transcript.setText(message); }
     private void startVoice() {
