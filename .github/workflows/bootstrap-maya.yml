@@ -61,3 +61,20 @@ jobs:
           name: MAYA-TaNiM-world-debug-apk
           path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
+
+      - name: Publish direct APK download on GitHub Releases
+        if: success()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          TAG="v0.3.0-original-debug"
+          ASSET="MAYA-AI-Voice-Assistant-TaNiM-world-v0.3-debug.apk"
+          cp app/build/outputs/apk/debug/app-debug.apk "$ASSET"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "$ASSET" --clobber
+          else
+            gh release create "$TAG" "$ASSET" --target "$GITHUB_SHA" --title "MAYA AI Voice Assistant v0.3 (Android Debug APK)" --notes "Original MAYA Android source by TaNiM world. This is a DEBUG APK for testing, not a verified production release. Some features are incomplete and phone testing is required. Download the APK asset directly below."
+          fi
+          gh release view "$TAG" --json url,assets
