@@ -122,7 +122,14 @@ public final class MemoryPackActivity extends Activity {
                 byte[] bytes;
                 try (InputStream input = getContentResolver().openInputStream(uri)) {
                     if (input == null) throw new Exception("Could not open memory pack.");
-                    bytes = input.readNBytes(2_000_001);
+                    java.io.ByteArrayOutputStream buffer = new java.io.ByteArrayOutputStream();
+                    byte[] part = new byte[8192];
+                    int n;
+                    while ((n = input.read(part)) != -1) {
+                        if (buffer.size() + n > 2_000_000) throw new Exception("Memory backup exceeds 2 MB.");
+                        buffer.write(part, 0, n);
+                    }
+                    bytes = buffer.toByteArray();
                 }
                 if (bytes.length > 2_000_000) throw new Exception("Memory backup exceeds 2 MB.");
                 pendingJson = new String(bytes, StandardCharsets.UTF_8);

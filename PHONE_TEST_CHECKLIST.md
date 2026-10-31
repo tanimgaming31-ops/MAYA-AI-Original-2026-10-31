@@ -29,3 +29,6 @@ Debug APK build success is not sufficient evidence for full device behavior.
 
 Never assume 3D, offline hotword, hidden camera security, 24/7 voice, or
 autonomous verified messaging exists in this debug build.
+
+- [ ] Start Floating MAYA with explicit system overlay permission, then stop it; confirm it never runs without user action.
+- [ ] Choose a test screenshot in Image Vision, reject upload once, then confirm only a non-sensitive test image is sent to Gemini.

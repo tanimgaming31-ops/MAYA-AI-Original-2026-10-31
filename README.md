@@ -95,3 +95,10 @@ bounded macros, native diagnostics and user-selected image/PDF OCR and QR/barcod
   successful run > Artifacts > MAYA-TaNiM-world-debug-apk.
 - All code is newly authored for MAYA; no Tech GPTx source/assets were copied.
 - See `FEATURE_STATUS.md` and `PHONE_TEST_CHECKLIST.md` for honest limitations.
+
+### New v0.3 image vision and floating avatar
+
+- **Floating MAYA ON** from main screen → Android overlay permission prompt → visible 2D floating avatar. Use **FLOATING OFF** to stop. This is not a hidden tracking service.
+- **SCREENSHOT VISION** → choose an image saved on your device → REVIEW AND ASK GEMINI. The image is sent to Google's Gemini service only after a separate on-screen confirmation. A model response is not a medical diagnosis and may be wrong.
+- New native ML Kit OCR/barcodes require their third-party licenses and can increase APK size.
+- Debug APK build success does not imply phone-tested functionality.

@@ -21,7 +21,7 @@ not that it has passed real Android hardware tests.
 | WhatsApp draft | LIMITED | Requires phone number; opens draft, user manually sends |
 | **Notification quick reply** | CODE | User enables notification access and confirms every Send; delivery unverified |
 | **Contact picker** | CODE | User chooses number, dialer opens, no automatic call |
-| **17 original vector avatars** | CODE | Two-dimensional animated shapes, NOT 3D human models |
+| **17 original vector avatars** | CODE | 2D animated shapes, selectable and available in an opt-in overlay (not 3D models) |
 | **Device Diagnostics** | CODE | Permissions, service availability, key presence |
 | **App navigation/media controls** | CODE | Back/home/scroll, play/pause/next/previous; UI outcomes not guaranteed |
 | **Bounded App Macros** | LIMITED | User reviews each run; limited steps, protected actions blocked |
@@ -30,6 +30,8 @@ not that it has passed real Android hardware tests.
 | **Receipt subtotal/total hint** | LIMITED | Simple total text extraction; not validated expense accounting |
 | User-requested screenshot | CODE | Accessibility screenshot, Android 11+; needs phone test |
 | Screen text inspection | CODE | Limited accessible visible UI tree; passwords excluded |
+| **Optional floating avatar overlay** | CODE | User explicitly grants Draw over other apps; no automatic microphone use |
+| **Explicit-consent Gemini image vision** | CODE | User chooses photo/screenshot and approves upload to Google; Gemini response needs verification |
 | Reboot-persistent inexact reminders | CODE | Restores scheduled notifications after reboot; Android may delay |
 | Always-on offline wake word / Vosk | PLANNED | No bundled model or offline hotword |
 | All-day unattended background listening | PLANNED | Android foreground session only |
