@@ -79,3 +79,19 @@ For publication, configure your own protected release keystore separately.
 ## Project ownership
 See LICENSE.txt and THIRD_PARTY_NOTICES.md. New original code is labeled
 Copyright (c) 2026 TaNiM world. That does not erase any third-party legal rights.
+
+## MAYA new native utilities (2026-10-31)
+
+The Android source now includes local Memory Pack JSON export/import, Android
+Notification Listener with **per-message send confirmation**, contact picker
+and dialer, persisted reminders after reboot, 17 newly drawn 2D avatars, safe
+bounded macros, native diagnostics and user-selected image/PDF OCR and QR/barcodes.
+
+- Open MAYA's main screen, use **MEMORY BACKUP**, **NOTIFICATION REPLIES**,
+  **DIAGNOSTICS**, **17 AVATARS**, **DOCUMENT OCR**, and **APP MACROS**.
+- Set permission/access manually in Android Settings; MAYA never silently does it.
+- The OCR library is Google ML Kit, which carries its own license and models.
+- APK Build: Actions > Bootstrap and build original MAYA Android app > latest
+  successful run > Artifacts > MAYA-TaNiM-world-debug-apk.
+- All code is newly authored for MAYA; no Tech GPTx source/assets were copied.
+- See `FEATURE_STATUS.md` and `PHONE_TEST_CHECKLIST.md` for honest limitations.

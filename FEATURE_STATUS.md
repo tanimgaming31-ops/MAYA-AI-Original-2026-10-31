@@ -1,34 +1,51 @@
-# Feature audit (2026-10-31)
+# MAYA AI Voice Assistant — feature status
+Updated 2026-10-31, developer/publisher label: **TaNiM world**.
 
-Legend: **SOURCE** = original implementation written, not APK-tested; **LIMITED**
-= partial implementation; **NOT YET** = not claimed functional.
+This is an independently authored Android app, **not** a renamed copy of Playlist.
+**BUILT** means GitHub Actions compilation succeeded for code in this repository,
+not that it has passed real Android hardware tests.
+**CODE** means implementation exists and requires APK/device testing.
+**LIMITED** means only partial behavior is provided.
+**PLANNED** means not implemented.
 
-| Feature | Status | Reality |
+| Feature | Status | What you should expect |
 |---|---|---|
-| Gemini Live 16k/24k audio | SOURCE | Needs API/model/device test; API key required |
-| Natural barge-in | LIMITED | Playback flush event; device echo/audio-focus needs test |
-| Local memories | SOURCE | SQLite CRUD; no semantic retrieval embeddings |
-| Voice tool calling | SOURCE | Uses supported model functionDeclarations, device test pending |
-| Flash/volume/brightness | SOURCE | Android permission and OEM restrictions apply |
-| Open apps/search web/YouTube | SOURCE | Best-effort intents; YouTube auto-play not assured |
-| WhatsApp messaging | LIMITED | Opens prefilled draft; user sends manually |
-| Android Accessibility | LIMITED | Explicit screen inspection, text/click by target label |
-| Multi-step agent | NOT YET | No autonomous verified closed-loop general agent |
-| Offline wake word | NOT YET | Needs permission-aware Vosk integration/model |
-| Reliable hands-free all-day background | NOT YET | Foreground active call only, no offline standby |
-| Screen sharing to Gemini | NOT YET | MediaProjection capture/stream not built |
-| User-requested screenshot | SOURCE / LIMITED | Accessibility screenshot on Android 11+ saved to Pictures/MAYA; not device-tested |
-| Live screenshot vision | NOT YET | Image analysis by Gemini not implemented |
-| Spotify/Instagram automation | NOT YET | No reliable dedicated integration |
-| 17 floating avatars, 3D model | NOT YET | Custom original canvas orb only |
-| Owner voice biometrics | NOT YET | No speaker verification; not security-grade |
-| Face detection/intruder photo | NOT YET | Not included |
-| Notification quick replies | NOT YET | Not implemented |
-| App macros & multi-app routines | NOT YET | Not implemented |
-| PDF/receipt/medicine scanning | NOT YET | Not implemented |
-| Reminders | SOURCE / LIMITED | Inexact AlarmManager notification; not reboot-persistent; device test pending |
-| Clock alarm integration | NOT YET | Not implemented |
-| GitHub Android APK workflow | SOURCE | Workflow present; cloud build not yet run |
-| Production release signing | NOT YET | Debug artifact only |
+| Gemini Live native 16kHz/24kHz audio | CODE | Live network session; needs user's API key and real phone tests |
+| Voice-to-Android function calling | CODE | Tool schemas for safe controls, still needs real use validation |
+| Barge-in / interruption | LIMITED | Playback interrupt event; no measured audio-focus reliability |
+| Local memory storage/retrieval | CODE | SQLite facts and lookup |
+| **Memory Pack export and merge** | CODE | System file picker; JSON backup/import; preserves existing facts |
+| Flashlight, brightness, volume | CODE | Android permission/hardware restrictions |
+| Any installed app by accessible launcher name | LIMITED | Android app visibility and clone packages can differ |
+| Browser/YouTube search | LIMITED | Opens results, not automatic video play |
+| WhatsApp draft | LIMITED | Requires phone number; opens draft, user manually sends |
+| **Notification quick reply** | CODE | User enables notification access and confirms every Send; delivery unverified |
+| **Contact picker** | CODE | User chooses number, dialer opens, no automatic call |
+| **17 original vector avatars** | CODE | Two-dimensional animated shapes, NOT 3D human models |
+| **Device Diagnostics** | CODE | Permissions, service availability, key presence |
+| **App navigation/media controls** | CODE | Back/home/scroll, play/pause/next/previous; UI outcomes not guaranteed |
+| **Bounded App Macros** | LIMITED | User reviews each run; limited steps, protected actions blocked |
+| **Image and PDF OCR** | CODE | User-selected file, ML Kit Latin-script text; PDF first six pages |
+| **QR/barcode scanner** | CODE | Reads user-selected image, not a live camera scanner |
+| **Receipt subtotal/total hint** | LIMITED | Simple total text extraction; not validated expense accounting |
+| User-requested screenshot | CODE | Accessibility screenshot, Android 11+; needs phone test |
+| Screen text inspection | CODE | Limited accessible visible UI tree; passwords excluded |
+| Reboot-persistent inexact reminders | CODE | Restores scheduled notifications after reboot; Android may delay |
+| Always-on offline wake word / Vosk | PLANNED | No bundled model or offline hotword |
+| All-day unattended background listening | PLANNED | Android foreground session only |
+| Screen MediaProjection to Gemini Live | PLANNED | No continuous video/screen-share integration |
+| Full agentic multi-app action planning | PLANNED | No closed-loop planner / verification |
+| Spotify/Instagram autonomous workflows | PLANNED | No reliable dedicated integration |
+| Fully rigged 3D girl, hair/eye/lip sync | PLANNED | Vector avatars are not 3D |
+| Owner voice recognition | PLANNED | No biometric speaker identification |
+| Intruder face detection/camera alerts | PLANNED | No hidden camera behavior |
+| Full handwriting/medicine multilingual OCR | PLANNED | Current OCR is Latin text with manual review |
+| Phone hardware integration tests | PLANNED | No user-phone tests yet |
+| Production signature/Play Store release | PLANNED | Debug APK only |
 
-This status file intentionally avoids claiming that code existence equals verified behavior.
+**License reality:** TaNiM world owns the newly authored application-specific files
+to the extent applicable law recognizes that ownership. Bundled Android SDK, OkHttp
+and Google ML Kit have separate licenses and must retain their original rights.
+Do not represent this project as having no third-party licenses.
+
+**Source and builds:** https://github.com/tanimgaming31-ops/MAYA-AI-Original-2026-10-31

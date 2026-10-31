@@ -1,37 +1,28 @@
-# Complete-parity work still required (not yet implemented)
+# Remaining work to approach Playlist functional parity
 
-The goal is to independently develop MAYA with comparable functionality to
-JARVIS/Playlist Parts 1–7 *without copying source code or protected assets*.
-This starter is only Stage 1; do not advertise comprehensive feature parity.
+After current independently written MAYA features, the following require
+substantial implementation, test devices, assets or explicit user approval:
 
-## Stage 2 — voice reliability
-- Add offline Vosk hotword with model license verification and low-power service.
-- Wake from notification / user action according to Android background rules.
-- Bluetooth routing, audio focus, headset barge-in, detailed diagnostics,
-  seamless microphone restart, and independent device QA.
+1. Native offline Vosk wake word, licensed downloaded model, wake-word training,
+   power budget and background service restrictions on Android 13–17.
+2. Continuous Gemini Live screen video, MediaProjection consent lifecycle,
+   sensitive screen masking, secure video frame ingestion and pause indicator.
+3. Real 3D rigged avatar with licensed GLB/VRM model, blend-shapes, visemes,
+   speech-aligned facial animation and rig tests.
+4. Automated WhatsApp/IMO/Messenger contact search/send with per-send review,
+   clone-package variations, UI verification and regression tests.
+5. Reliable closed-loop AI agent: explicit goal, action plan, observation,
+   safety boundaries, max attempts, user cancel, final-state verification.
+6. Owner speaker enrollment and device-local embeddings; security evaluation
+   before claiming biometric voice identification.
+7. Optional visible camera-based owner checks with user consent and privacy.
+   Covert capture and hidden monitoring are intentionally not implemented.
+8. Full PDF/document/receipt toolkit: deskew, multilingual handwriting,
+   expense database, receipt line-item extraction, privacy-aware backup.
+9. Real notification inbox/safe response workflows beyond quick-reply actions;
+   media/YouTube control validation; Spotify and Instagram compatibility.
+10. Android emulator/physical phone tests, accessibility-specific tests,
+    dependency/license audit, publishable signed APK/AAB.
 
-## Stage 3 — Android and messaging
-- Native scoped contact search, opt-in call intents, scheduled alarms and
-  persistent reminders, notification listener with approved quick-reply.
-- App macros with explicit per-app allowlist and testable UI verification.
-- WhatsApp and other messaging workflows with per-send confirmation, no bypass.
-
-## Stage 4 — visual reasoning and automation
-- MediaProjection consent flow, properly managed screen-share service, frame
-  throttling, redaction of sensitive content, Gemini video input.
-- Agent plans/steps, inspection, state signatures, bounded retries, cancellation,
-  cross-app action verification, consistent error reports.
-- Targeted Instagram / Spotify tasks with explicit end-state validation.
-
-## Stage 5 — polish and data
-- 17 *new original* designed floating avatars, original Three.js animation,
-  custom themes, avatar picker, accessibility HUD.
-- Memory packs with JSON import/export, backups, multi-language translator,
-  optional on-device owner voice recognition, accessibility diagnostics.
-- Document/receipt/PDF scanning and expense tools with on-device processing.
-- Security checks with explicit user opt-in; never silently photograph others.
-
-## Stage 6 — shipping
-- Android integration tests and emulator/phone smoke tests on representative
-  Android 11–17 phones, third-party notice audit, privacy statement, release
-  signing key under sole publisher control, update testing.
+A feature is not complete until it passes device tests on target Android versions.
+Do not silently change other Maya, Zoya, Jeery or keyboard repositories.
