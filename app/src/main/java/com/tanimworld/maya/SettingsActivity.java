@@ -48,6 +48,11 @@ public final class SettingsActivity extends Activity {
             try { SecretStore.setApiKey(this, ""); Toast.makeText(this, "API key removed", Toast.LENGTH_SHORT).show(); }
             catch (Exception e) { Toast.makeText(this, "Key removal failed", Toast.LENGTH_SHORT).show(); }
         });
+        addButton(layout, "MEMORY PACK BACKUP / MERGE", () -> startActivity(new Intent(this, MemoryPackActivity.class)));
+        addButton(layout, "17 ORIGINAL AVATARS", () -> startActivity(new Intent(this, AvatarPickerActivity.class)));
+        addButton(layout, "DIAGNOSTICS", () -> startActivity(new Intent(this, DiagnosticsActivity.class)));
+        addButton(layout, "APPROVED NOTIFICATION REPLIES", () -> startActivity(new Intent(this, ReplyActivity.class)));
+        addButton(layout, "CONTACT PICKER", () -> startActivity(new Intent(this, ContactPickerActivity.class)));
         addButton(layout, "OPEN ACCESSIBILITY SETTINGS", () -> startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)));
         addButton(layout, "OPEN APP PERMISSIONS", () -> startActivity(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:" + getPackageName()))));
         addLabel(layout, "Android requires separate user approval for microphone and Accessibility. No hidden monitoring. Voice is sent to Google only when the active session is started.", 13, Color.LTGRAY);

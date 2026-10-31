@@ -44,6 +44,19 @@ public final class MayaAccessibilityService extends AccessibilityService {
         for (int i=0;i<n.getChildCount();i++) if (clickWalk(n.getChild(i), target, depth+1)) return true;
         return false;
     }
+    public boolean goBack() { return performGlobalAction(GLOBAL_ACTION_BACK); }
+    public boolean goHome() { return performGlobalAction(GLOBAL_ACTION_HOME); }
+    public boolean scroll(boolean down) {
+        AccessibilityNodeInfo root = getRootInActiveWindow();
+        return root != null && scrollWithin(root, down, 0);
+    }
+    private boolean scrollWithin(AccessibilityNodeInfo n, boolean down, int depth) {
+        if(n==null||depth>24)return false;
+        if(n.isVisibleToUser() && n.isScrollable() && n.performAction(
+                down?AccessibilityNodeInfo.ACTION_SCROLL_FORWARD:AccessibilityNodeInfo.ACTION_SCROLL_BACKWARD))return true;
+        for(int i=0;i<n.getChildCount();i++)if(scrollWithin(n.getChild(i),down,depth+1))return true;
+        return false;
+    }
     public boolean typeIntoFocusedField(String value) {
         AccessibilityNodeInfo root = getRootInActiveWindow(); if (root == null) return false;
         AccessibilityNodeInfo input = root.findFocus(AccessibilityNodeInfo.FOCUS_INPUT);

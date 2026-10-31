@@ -35,6 +35,7 @@ public final class SecretStore {
         System.arraycopy(encrypted, 0, packed, iv.length, encrypted.length);
         prefs(c).edit().putString("encrypted_api_key", Base64.encodeToString(packed, Base64.NO_WRAP)).apply();
     }
+    public static boolean hasApiKey(Context c) { return !getApiKey(c).isEmpty(); }
     public static String getApiKey(Context c) {
         String encoded = prefs(c).getString("encrypted_api_key", ""); if (encoded.isEmpty()) return "";
         try {

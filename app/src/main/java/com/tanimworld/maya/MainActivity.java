@@ -32,6 +32,9 @@ public final class MainActivity extends Activity implements MayaBus.Listener {
         row(col, "SETTINGS", () -> startActivity(new Intent(this, SettingsActivity.class)), "MEMORIES", () -> say(CommandRouter.recall(this, "")));
         row(col, "TORCH ON", () -> { if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) { requestPermissions(new String[]{Manifest.permission.CAMERA}, 13); } else say(CommandRouter.torch(this, true)); }, "TORCH OFF", () -> say(CommandRouter.torch(this, false)));
         row(col, "OPEN CAMERA", () -> say(CommandRouter.openApp(this, "camera")), "READ SCREEN", () -> say(CommandRouter.inspectScreen()));
+        row(col, "MEMORY BACKUP", () -> startActivity(new Intent(this, MemoryPackActivity.class)), "CONTACT PICKER", () -> startActivity(new Intent(this, ContactPickerActivity.class)));
+        row(col, "NOTIFICATION REPLIES", () -> startActivity(new Intent(this, ReplyActivity.class)), "DIAGNOSTICS", () -> startActivity(new Intent(this, DiagnosticsActivity.class)));
+        row(col, "17 AVATARS", () -> startActivity(new Intent(this, AvatarPickerActivity.class)), "SCREENSHOT", () -> say(ScreenshotHelper.capture()));
         EditText command = new EditText(this); command.setSingleLine(false); command.setMinLines(2);
         command.setHint("Try: remember my cat is black\nopen youtube · torch on · search weather");
         command.setHintTextColor(0xFF68758D); command.setTextColor(Color.WHITE);

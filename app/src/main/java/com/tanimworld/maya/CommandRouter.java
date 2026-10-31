@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.hardware.camera2.CameraManager;
 import android.media.AudioManager;
+import android.view.KeyEvent;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.provider.Settings;
@@ -33,6 +34,19 @@ public final class CommandRouter {
         if (lower.startsWith("open ")) return openApp(context, text.substring(5));
         if (lower.startsWith("search ")) return searchWeb(context, text.substring(7));
         if (lower.startsWith("youtube ")) return youtube(context, text.substring(8));
+        if (lower.equals("back") || lower.equals("go back")) return navigation("back");
+        if (lower.equals("home") || lower.equals("go home")) return navigation("home");
+        if (lower.equals("scroll down")) return navigation("down");
+        if (lower.equals("scroll up")) return navigation("up");
+        if (lower.startsWith("tap ")) return clickScreen(text.substring(4));
+        if (lower.startsWith("type ")) return typeScreen(text.substring(5));
+        if (lower.startsWith("avatar ")) return AvatarStyles.set(context,text.substring(7));
+        if (lower.equals("avatars")) { context.startActivity(new Intent(context,AvatarPickerActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); return "Avatar picker opened."; }
+        if (lower.equals("choose contact")) { context.startActivity(new Intent(context,ContactPickerActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); return "Contact picker opened."; }
+        if (lower.equals("notification replies")) { context.startActivity(new Intent(context,ReplyActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); return "Approved reply screen opened."; }
+        if (lower.equals("play pause") || lower.equals("pause music")) return media(context,"toggle");
+        if (lower.equals("next song")) return media(context,"next");
+        if (lower.equals("previous song")) return media(context,"previous");
         if (lower.equals("read screen") || lower.equals("inspect screen")) return inspectScreen();
         if (lower.equals("take screenshot") || lower.equals("screenshot")) return ScreenshotHelper.capture();
         if (lower.startsWith("remind in ")) {
@@ -162,6 +176,34 @@ public final class CommandRouter {
         MayaAccessibilityService s = MayaAccessibilityService.active;
         return s != null && s.typeIntoFocusedField(text) ? "Entered text into focused editable field." : "No safe focused input field.";
     }
+    public static String navigation(String kind) {
+        MayaAccessibilityService a = MayaAccessibilityService.active;
+        if(a==null)return "Enable MAYA Accessibility to navigate.";
+        boolean ok;
+        switch(kind){
+            case "back":ok=a.goBack();break;
+            case "home":ok=a.goHome();break;
+            case "down":ok=a.scroll(true);break;
+            case "up":ok=a.scroll(false);break;
+            default:return "Unknown navigation command.";
+        }
+        return ok?"Navigation requested; destination not verified.":"Navigation failed or no scrollable area.";
+    }
+    public static String media(Context context,String kind) {
+        int key;
+        switch(kind){
+            case "toggle":key=KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE;break;
+            case "next":key=KeyEvent.KEYCODE_MEDIA_NEXT;break;
+            case "previous":key=KeyEvent.KEYCODE_MEDIA_PREVIOUS;break;
+            default:return "Unknown media action.";
+        }
+        try{
+            AudioManager a=(AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
+            a.dispatchMediaKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN,key));
+            a.dispatchMediaKeyEvent(new KeyEvent(KeyEvent.ACTION_UP,key));
+            return "Media key dispatched; player response not verified.";
+        }catch(Exception e){return "Media control unavailable.";}
+    }
     public static String runTool(Context c, String name, JSONObject args) {
         switch (name) {
             case "open_app": return openApp(c, args.optString("app_name"));
@@ -177,6 +219,9 @@ public final class CommandRouter {
             case "set_reminder": return ReminderReceiver.schedule(c, args.optInt("minutes", 0), args.optString("message"));
             case "click_label": return clickScreen(args.optString("label"));
             case "type_focused": return typeScreen(args.optString("text"));
+            case "navigate": return navigation(args.optString("direction"));
+            case "media_control": return media(c,args.optString("action"));
+            case "select_avatar": return AvatarStyles.set(c,args.optString("style"));
             case "whatsapp_draft": return whatsappDraft(c, args.optString("phone_number"), args.optString("message"));
             default: return "Unknown or unavailable tool: " + name;
         }

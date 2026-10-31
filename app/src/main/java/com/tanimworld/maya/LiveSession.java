@@ -98,6 +98,9 @@ public final class LiveSession {
         funcs.put(tool("whatsapp_draft", "Open a WhatsApp draft only; user must press Send manually", new JSONObject()
                 .put("phone_number", param("International digits including country prefix", "STRING"))
                 .put("message", param("Draft message", "STRING")), "phone_number", "message"));
+        funcs.put(tool("navigate", "Navigate back/home or scroll up/down through user-enabled Accessibility", new JSONObject().put("direction", param("back, home, up, or down", "STRING")), "direction"));
+        funcs.put(tool("media_control", "Play/pause or skip tracks on current media app, not a guaranteed playback result", new JSONObject().put("action",param("toggle, next, or previous", "STRING")), "action"));
+        funcs.put(tool("select_avatar", "Change Maya to one of 17 original 2D avatars",new JSONObject().put("style",param("orb, circle, cat, star, flower, hexagon, drop, ghost, droid, mech, cloud, alien, square, triangle, pill, blob, heart", "STRING")), "style"));
         return funcs;
     }
     private void receive(String data) {
