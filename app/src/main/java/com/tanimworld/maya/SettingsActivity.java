@@ -54,6 +54,7 @@ public final class SettingsActivity extends Activity {
         addButton(layout, "APPROVED NOTIFICATION REPLIES", () -> startActivity(new Intent(this, ReplyActivity.class)));
         addButton(layout, "CONTACT PICKER", () -> startActivity(new Intent(this, ContactPickerActivity.class)));
         addButton(layout, "ON-DEVICE DOCUMENT / RECEIPT / QR", () -> startActivity(new Intent(this, DocumentToolsActivity.class)));
+        addButton(layout, "APP MACROS (REVIEW EACH RUN)", () -> startActivity(new Intent(this, MacroActivity.class)));
         addButton(layout, "OPEN ACCESSIBILITY SETTINGS", () -> startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)));
         addButton(layout, "OPEN APP PERMISSIONS", () -> startActivity(new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:" + getPackageName()))));
         addLabel(layout, "Android requires separate user approval for microphone and Accessibility. No hidden monitoring. Voice is sent to Google only when the active session is started.", 13, Color.LTGRAY);
