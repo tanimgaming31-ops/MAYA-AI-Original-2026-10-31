@@ -22,3 +22,7 @@ and standard Android integration methods are independently implemented.
 ## Google ML Kit
 
 The optional on-device OCR/barcode modules use Google ML Kit Android libraries: `com.google.mlkit:text-recognition:16.0.1` and `com.google.mlkit:barcode-scanning:17.3.0`. Those binaries and ML models remain subject to Google and their applicable dependency licenses; they are not owned by TaNiM world. Source of the DocumentToolsActivity is newly authored. The user explicitly chooses a local file; this feature does not upload it to Gemini.
+
+## Weather API
+
+WeatherCard requests live weather information from [Open-Meteo](https://open-meteo.com/) only after the user enables optional coarse location access and taps Weather. Use is subject to Open-Meteo's API service terms and data-source attribution requirements; the displayed weather numbers are not built-in or fabricated.

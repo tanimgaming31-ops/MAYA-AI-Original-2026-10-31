@@ -102,3 +102,19 @@ bounded macros, native diagnostics and user-selected image/PDF OCR and QR/barcod
 - **SCREENSHOT VISION** → choose an image saved on your device → REVIEW AND ASK GEMINI. The image is sent to Google's Gemini service only after a separate on-screen confirmation. A model response is not a medical diagnosis and may be wrong.
 - New native ML Kit OCR/barcodes require their third-party licenses and can increase APK size.
 - Debug APK build success does not imply phone-tested functionality.
+
+## MAYA v0.4 — Original Pastel Home Redesign
+
+The main screen is a **new native Android design**, inspired only by the user's requested general layout direction; no source, brand art, particles, graphics, third-party UI or voice files are copied from Jerry/Playlist.
+
+- **MAYA**, Developer **TaNiM world**, original coral-and-lavender animated particle orb.
+- Greetings based on the device's time; tap the large orb or central microphone to start/stop an active Gemini Live session.
+- Optional **local-weather** card uses Open-Meteo weather readings, only after asking for coarse Android location permission. No simulated default temperatures. Requires network and enabled Location.
+- Shortcuts for screen reading/screenshots, Memories/backup and Language/Settings.
+- Fixed bottom navigation: Home, Chat, Mic, Settings, **Tools**.
+- **Tools** keeps all previous features accessible: torch, camera, screen inspection, screenshot vision, ML Kit OCR, barcode, macros, notification replies, Memory Packs, diagnostics, floating MAYA, media and navigation.
+- **Chat** retains local voice-independent text commands, plus text sent to the live Gemini session when connected.
+- User data and prior MAYA Original memory remain in app-private storage. This is the same package name (com.tanimworld.maya); release/debug signature differences may affect whether Android allows an update, so back up Memory Packs first.
+- Open-Meteo attribution: https://open-meteo.com/ . Weather is an optional live network request.
+
+**Known limitations:** This is a visual/UI redesign, NOT evidence of Playlist feature parity. No automatic WhatsApp sending, genuine screen sharing or 3D human rig is claimed. A successful cloud compile is not the same as a physical Android phone test.

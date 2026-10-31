@@ -51,3 +51,14 @@ and Google ML Kit have separate licenses and must retain their original rights.
 Do not represent this project as having no third-party licenses.
 
 **Source and builds:** https://github.com/tanimgaming31-ops/MAYA-AI-Original-2026-10-31
+
+## v0.4 UI Redesign
+
+| Feature | Status | Reality |
+|---|---|---|
+| New warm-pastel MAYA home | CODE | Native Android card layout, original style, hardware QA pending |
+| Particle sphere with rotating visual | CODE | Native Canvas 3D-projected 2D particles; does not claim rigged 3D model |
+| Local weather | LIMITED | Live Open-Meteo only after optional Android coarse location permission; no location = no invented temperature |
+| Bottom navigation | CODE | Home, Chat, Mic, Settings and Tools screens |
+| All older shortcuts preserved | CODE | Moved to Tools; not removed from project |
+| Original logo/branding | CODE | MAYA by TaNiM world; no copied Jerry assets |
