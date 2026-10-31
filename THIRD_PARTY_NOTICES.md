@@ -18,3 +18,7 @@ Do not delete third-party notices/licenses from dependency distributions. No
 Tech GPTx source code is included, so the Tech GPTx repository license is not
 claimed as the license for this independent project. Functionality concepts
 and standard Android integration methods are independently implemented.
+
+## Google ML Kit
+
+The optional on-device OCR/barcode modules use Google ML Kit Android libraries: `com.google.mlkit:text-recognition:16.0.1` and `com.google.mlkit:barcode-scanning:17.3.0`. Those binaries and ML models remain subject to Google and their applicable dependency licenses; they are not owned by TaNiM world. Source of the DocumentToolsActivity is newly authored. The user explicitly chooses a local file; this feature does not upload it to Gemini.

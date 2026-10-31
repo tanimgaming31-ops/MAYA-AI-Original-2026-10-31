@@ -35,6 +35,7 @@ public final class MainActivity extends Activity implements MayaBus.Listener {
         row(col, "MEMORY BACKUP", () -> startActivity(new Intent(this, MemoryPackActivity.class)), "CONTACT PICKER", () -> startActivity(new Intent(this, ContactPickerActivity.class)));
         row(col, "NOTIFICATION REPLIES", () -> startActivity(new Intent(this, ReplyActivity.class)), "DIAGNOSTICS", () -> startActivity(new Intent(this, DiagnosticsActivity.class)));
         row(col, "17 AVATARS", () -> startActivity(new Intent(this, AvatarPickerActivity.class)), "SCREENSHOT", () -> say(ScreenshotHelper.capture()));
+        row(col, "DOCUMENT OCR", () -> startActivity(new Intent(this, DocumentToolsActivity.class)), "QR / BARCODE", () -> startActivity(new Intent(this, DocumentToolsActivity.class)));
         EditText command = new EditText(this); command.setSingleLine(false); command.setMinLines(2);
         command.setHint("Try: remember my cat is black\nopen youtube · torch on · search weather");
         command.setHintTextColor(0xFF68758D); command.setTextColor(Color.WHITE);

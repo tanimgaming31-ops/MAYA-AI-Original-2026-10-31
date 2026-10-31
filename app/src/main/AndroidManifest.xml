@@ -26,6 +26,7 @@
         <activity android:name=".DiagnosticsActivity" android:exported="false" />
         <activity android:name=".ContactPickerActivity" android:exported="false" />
         <activity android:name=".AvatarPickerActivity" android:exported="false" />
+        <activity android:name=".DocumentToolsActivity" android:exported="false" />
         <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
