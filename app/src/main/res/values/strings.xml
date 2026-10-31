@@ -1,0 +1,4 @@
+<resources>
+<string name="app_name">MAYA AI Voice Assistant</string>
+<string name="accessibility_description">Optional screen assistance: reads on-screen text and performs clicks or text input only in response to explicit commands. Enable in Android Settings; turn off anytime.</string>
+</resources>

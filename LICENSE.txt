@@ -1,0 +1,15 @@
+MAYA AI Voice Assistant — Original Application Source
+Copyright (c) 2026 TaNiM world. All rights reserved.
+
+This repository's newly authored, original application-specific source is
+reserved to its named publisher, TaNiM world. No permission to redistribute,
+sell, or relicense that application-specific source is granted by this notice.
+
+This notice DOES NOT claim ownership of Android, Google's Gemini API, OkHttp,
+Gradle, or any other third-party software. Those components retain their own
+copyrights and licenses. See THIRD_PARTY_NOTICES.md.
+
+This is a proprietary notice, not a representation that copyright law does not
+apply and not a guarantee of exclusive rights to AI-assisted source code in
+every jurisdiction. Review ownership and distribution with a qualified legal
+professional if absolute exclusivity is important.
