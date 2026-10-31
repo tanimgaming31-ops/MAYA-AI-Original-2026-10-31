@@ -45,3 +45,26 @@
   wake-word, live MediaProjection screen sharing, complete autonomous agent or biometric security.
 - Licensing: newly authored source owned by TaNiM world; third-party SDK, OkHttp,
   ML Kit and other dependencies retain applicable separate rights.
+
+
+## v0.4 Pastel home and UI navigation — 2026-10-31
+
+- Commit built: `62130e6b90b267efecfdcf1d0d08ca21c9eee4e4`
+- GitHub Actions run: https://github.com/tanimgaming31-ops/MAYA-AI-Original-2026-10-31/actions/runs/41170147146
+- Outcome: **SUCCESS** — source verified, Java/Android SDK setup, Gradle assembleDebug, Artifact upload, Release upload.
+- APK size: **68,369,145 bytes**
+- APK SHA256: `d18c236a3f12589cd871cb3f48a8faf1fd94b8f7c66bb019289e2e1919b1a500`.
+- ZIP / APK archive integrity: passed (classes.dex / classes2.dex / classes3.dex present).
+- Main app version: `0.4.0-original-pastel`, versionCode `4`, package `com.tanimworld.maya`.
+- New native screens: original pastel home, rotating particle sphere, opt-in Open-Meteo location weather card,
+  live voice control, quick Screen/Memory/Language cards, Home/Chat/Mic/Settings/Tools bottom bar,
+  full Tools screen retaining older controls, and chat entry.
+- All older core files (MemoryStore, VoiceService, Gemini Live interface, Android notification replies, OCR,
+  scanner, macros, other tools and local memory data format) retained.
+- **Not hardware tested:** voice reliability, location permission/weather request, button hit targets on each
+  screen size, and memory continuity on actual user phone.
+- IMPORTANT: The existing GitHub Release tag and asset filename currently say `v0.3`, but the artifact there
+  was freshly replaced by the v0.4 build. Match its SHA256 against the hash above; do not rely on the label.
+  A new standalone v0.4 release tag was not created.
+- This is an original layout recreation based on high-level user-provided design direction only; no copied
+  Jerry UI source, art, logos or licensed assets.
